@@ -1,0 +1,72 @@
+[
+  {
+    "Garment": "Shirt",
+    "Brand": "Abercrombie",
+    "Price": 40
+  },
+  {
+    "Garment": "Shirt",
+    "Brand": "Target",
+    "Price": 10
+  },
+  {
+    "Garment": "Shirt",
+    "Brand": "Aerie",
+    "Price": 25
+  },
+  {
+    "Garment": "Shirt",
+    "Brand": "Old Navy",
+    "Price": 9
+  },
+  {
+    "Garment": "Pants",
+    "Brand": "Gap",
+    "Price": 65
+  },
+  {
+    "Garment": "Pants",
+    "Brand": "Abercrombie",
+    "Price": 72
+  },
+  {
+    "Garment": "Pants",
+    "Brand": "Amazon",
+    "Price": 19
+  },
+  {
+    "Garment": "Pants",
+    "Brand": "Madewell",
+    "Price": 99.99
+  },
+  {
+    "Garment": "Pants",
+    "Brand": "American Eagle",
+    "Price": 30.14
+  },
+  {
+    "Garment": "Shoes",
+    "Brand": "Nike",
+    "Price": 129.99
+  },
+  {
+    "Garment": "Shoes",
+    "Brand": "New Balance",
+    "Price": 70
+  },
+  {
+    "Garment": "Shoes",
+    "Brand": "Veja",
+    "Price": 125.4
+  },
+  {
+    "Garment": "Shoes",
+    "Brand": "Converse",
+    "Price": 70
+  },
+  {
+    "Garment": "Shoes",
+    "Brand": "Hoka",
+    "Price": 140
+  }
+]

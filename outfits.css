@@ -1,0 +1,43 @@
+body {
+    padding-top: 7px;
+    padding-left: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1.1px;
+}
+
+ul {
+    list-style-type: none;
+    /* 0 padding makes the left border align with the block of color */
+    padding: 0;
+    margin: 20px;
+    border: 2px solid black;
+    width: 250px;
+}
+
+ul li {
+    background-color: #EAF4F4;
+    display: block;
+    /* makes color extend to the edge, beyond the text" */
+    padding: 5px;
+    /* padding around the text of each li */
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+ul li:hover{
+    background-color: #C9E2E2;
+}
+/* ul li:nth-child(even) {
+    background-color: #C9E2E2;
+} */
+
+
+
+
+p {
+    padding-left: 15px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fit Cost Calculator</title>
+    <style>
+        p.inline {
+            display: inline-block;
+            margin-right: 20px;
+            /* Adjust spacing as needed */
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <p>Garment</p>
+            </td>
+            <td>
+                <p>Brand</p>
+            </td>
+            <td>
+                <p>Price</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select id="garment">
+                    <option value="Shirt">Shirt</option>
+                    <option value="Pants">Pants</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Jacket">Jacket</option>
+                </select>
+            </td>
+            <td><input type="text" id="brand" /></td>
+            <td><input type="text" id="price" /></td>
+            <td><button onclick="addItem()">Add</button></td>
+        </tr>
+        <tr>
+            <td>
+                <p id="garmentList"></p>
+            </td>
+            <td>
+                <p id="brandList"></p>
+            </td>
+            <td>
+                <p id="priceList"></p>
+            </td>
+        </tr>
+    </table>
+    <p class="inline">Total Price: </p>
+    <p id="totalPrice" class="inline">0</p>
+</body>
+
+</html>
+<script>
+    function addItem() {
+        var garment = document.getElementById("garment").value;
+        var brand = document.getElementById("brand").value;
+        let price = parseFloat(document.getElementById("price").value);
+
+        if (!isNaN(price)) {
+        
+            document.getElementById("garmentList").innerText += garment + "\n";
+            document.getElementById("brandList").innerText += brand + "\n";
+            document.getElementById("priceList").innerText += price + "\n";
+
+            let runningTotal = parseFloat(document.getElementById("totalPrice").innerText);
+            document.getElementById("totalPrice").innerHTML = runningTotal + Number(price);
+
+            document.getElementById("garment").value = "";
+            document.getElementById("brand").value = "";
+            document.getElementById("price").value = "";
+        }
+        else{
+            document.getElementById("price").style.color = "red";
+        }
+    }
+</script>

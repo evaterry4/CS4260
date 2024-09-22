@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="outfits.css">
+
+<head>
+
+</head>
+
+<body onload="getGarmentData()">
+    <h1>Outfits</h1>
+    <p id="garmentList">
+
+    </p>
+    <p id="outfitList">
+
+    </p>
+    <table id="outfitTable">
+
+    </table>
+</body>
+
+</html>
+<script>
+    let shirts = [];
+    let pants = [];
+    let shoes = [];
+
+    function getGarmentData() {
+        let promiseObject = fetch('http://localhost:8080/clothing.json');
+
+        promiseObject.then(
+            res => res.json()
+        )
+            .then(d => {
+                displayData(d);
+                shirts = d.filter(d => d.Garment === "Shirt");
+                pants = d.filter(d => d.Garment === "Pants");
+                shoes = d.filter(d => d.Garment === "Shoes");
+                console.log(shirts);
+                console.log(shoes);
+                console.log(pants);
+            })
+    }
+
+    function displayData(data) {
+        const targetSelection = document.getElementById("garmentList");
+        let list = document.createElement("ul");
+        for (let i = 0; i < data.length; i++) {
+            let li = document.createElement("li");
+            li.setAttribute("id", "li" + i);
+            li.innerHTML = data[i]["Brand"] + " " + data[i]["Garment"];
+            li.addEventListener("click", () => {
+                garmentSelected(data[i]);
+            });
+            list.appendChild(li);
+        }
+        targetSelection.append(list);
+    }
+
+    function garmentSelected(garmentData) {
+        const table = document.getElementById("outfitTable");
+        // let list = document.createElement("ul");
+        let outfitId = 0;
+        switch (garmentData.Garment) {
+            case 'Shirt':
+                for (let p of pants) {
+                    for (let s of shoes) {
+                        let row = document.createElement("tr");
+                        row.setAttribute("id", "outfit" + outfitId);
+                        outfitId += 1;
+                        let col1 = document.createElement("td");
+                        let col2 = document.createElement("td");
+                        let col3 = document.createElement("td");
+
+                        col1.innerHTML = garmentData["Brand"] + " " + garmentData["Garment"];
+                        col2.innerHTML = p["Brand"] + " " + p["Garment"];
+                        col3.innerHTML = s["Brand"] + " " + s["Garment"];
+                        row.appendChild(col1);
+                        row.appendChild(col2);
+                        row.appendChild(col3);
+
+                        table.appendChild(row);
+                    }
+                }
+                break;
+            case 'Pants':
+                alert('you selected pants');
+                break;
+
+        }
+        // pElement.append(list);
+    }
+</script>

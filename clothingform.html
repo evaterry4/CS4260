@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<link rel="stylesheet" href="clothingform.css">
+	<table>
+		<tr>
+			<td>
+				
+			</td>
+			<td><p>Brand</p></td>
+			<td><p>Price</p></td>
+		</tr>
+		<tr>
+			<td>
+				<p>Shirt</p>
+			</td>
+			<td><input type="text" /></td>
+			<td><input type="text" name="price" /></td>
+		</tr>
+		<tr>
+			<td>
+				<p>Pants</p>
+			</td>
+			<td><input type="text" /></td>
+			<td><input type="text" name="price" /></td>
+		</tr>
+		<tr>
+			<td>
+				<p>Shoes</p>
+			</td>
+			<td><input type="text" /></td>
+			<td><input type="text" name="price" /></td>
+		</tr>
+	</table>
+	<!-- <input type="button" onClick="sumPrices()" value="Sum Prices"/> -->
+	<p class="button" id="total" onclick="sumPrices()">Sum</p>
+</body>
+
+</html>
+<script>
+	function sumPrices() {
+		var allPrices = document.getElementsByName('price');
+		let totalPrice = 0;
+		let price = 0;
+		for (let i = 0; i < allPrices.length; i++) {
+			price = parseFloat(allPrices[i].value);
+			if (!isNaN(price)) {
+				totalPrice += price;
+			}
+		}
+		document.getElementById('total').innerHTML = totalPrice;
+	}
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Async demo</title>
+    </head>
+    <body onload="pageSetup()">
+        <h1>Show list of options</h1>
+        <p id="selection">
+
+        </p>
+        <p id="output">
+
+        </p>
+    </body>
+</html>
+<script>
+    async function pageSetup() {
+        let optionCount = await getOptionCount();
+        const targetSelection = document.getElementById("selection");
+        let list = document.createElement("ul");
+        for (let i=0; i<optionCount; i++){
+            let li = document.createElement("li");
+            li.setAttribute("id", "li"+i);
+            li.innerHTML = "delay for " + i + " seconds";
+            li.addEventListener("click", ()=>fillOutput(i));
+            list.appendChild(li);
+        }
+        targetSelection.append(list);
+    }
+    async function getOptionCount() {
+        let optionValue=await fetch('http://localhost:8080/optionData.json')
+            .then(response=>response.json())
+            .then(t=> t.optionCount)
+            return optionValue;
+    }
+    function fillOutput(option){
+        let promiseObject = fetch('http://localhost:8080/cgi-bin/timedscript?options=' + option);
+        promiseObject.then(response.text)
+        .then(t=>document.getElementById("output").innerHTML+= t)
+        .catch(error=>console.log(error));
+    }
+</script>

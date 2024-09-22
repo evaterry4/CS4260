@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="shoppinglist.css">
+    <h1>Shopping List</h1>
+    <ul class="table-list">
+        <li class="header">Items</li>
+        <li>Eggs</li>
+        <li>Milk</li>
+        <li>Bread</li>
+        <li>Apples</li>
+        <li>Cheese</li>
+      </ul>
+    <button onclick="initializeShopping()">Generate Shopping List</button>
+    <p id = "optimizedList"></p>
+</body>
+
+</html>
+<script>
+    class Store {
+        constructor(productList, name) {
+            this.productList = productList
+            this.name = name;
+        }
+
+        getPriceForProduct(product) {
+            for (let i = 0; i < this.productList.length; i++) {
+                if (this.productList[i].name == product) {
+                    return this.productList[i].price;
+                }
+            }
+        }
+    }
+
+    class Product {
+        constructor(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+    }
+
+
+    class Shopper {
+        constructor(shoppingList, stores) {
+            //string array
+            this.shoppingList = shoppingList;
+            this.stores = stores;
+        }
+
+        generateShoppingSuggestions() {
+            let optimizedMap = new Map();
+            for (let store of this.stores) {
+                let itemsAtCurStore = [];
+                for (let product of store.productList) {
+                    let curStorePrice = store.getPriceForProduct(product.name);
+                    let curStoreIsCheapest = true;
+                    for (let otherStore of this.stores) {
+                        if (otherStore.name !== store.name && otherStore.getPriceForProduct(product.name) < curStorePrice) {
+                            curStoreIsCheapest = false;
+                            break;
+                        }
+                    }
+                    if (curStoreIsCheapest) {
+                        itemsAtCurStore.push([product.name, curStorePrice]);
+                    }
+
+                }
+                optimizedMap.set(store, itemsAtCurStore);
+               /** console.log(store);
+                for(let i=0; i<itemsAtCurStore.length; i++){
+                    
+                    console.log(itemsAtCurStore[i]);
+                } **/
+            }
+            return optimizedMap;
+        }
+    }
+
+    function initializeShopping() {
+        let shoppingList = ["eggs", "milk", "bread", "apples", "cheese"];
+        let shopperStores = generateStores();
+        let shopper = new Shopper(shoppingList, shopperStores);
+        optimizedMap = shopper.generateShoppingSuggestions();
+        let displayText = "";
+        optimizedMap.forEach((itemsAtCurStore, store) => {
+            displayText += `${store.name}:\n`; 
+            itemsAtCurStore.forEach(([product, price]) => {
+                displayText += `${product}: $${price.toFixed(2)}\n`; 
+            });
+            displayText += "\n";
+        });
+        document.getElementById("optimizedList").innerText = displayText;
+    }
+
+    function generateStores() {
+        const kroger_products = [
+            new Product("eggs", 1.99),
+            new Product("milk", 3.49),
+            new Product("bread", 0.99),
+            new Product("apples", 6.99),
+            new Product("cheese", 2.20)
+        ];
+
+        let kroger = new Store(kroger_products, "Kroger");
+
+        const aldi_products = [
+            new Product("eggs", 1.69),
+            new Product("milk", 2.49),
+            new Product("bread", 1.99),
+            new Product("apples", 2.99),
+            new Product("cheese", 2)
+        ];
+
+        let aldi = new Store(aldi_products, "Aldi");
+
+        const harris_products = [
+            new Product("eggs", 1.00),
+            new Product("milk", 3),
+            new Product("bread", 3.50),
+            new Product("apples", 7.99),
+            new Product("cheese", 5.20)
+        ];
+
+        let harris = new Store(harris_products, "Harris Teeter");
+
+        const trader_products = [
+            new Product("eggs", 3.99),
+            new Product("milk", 1.50),
+            new Product("bread", 2.75),
+            new Product("apples", 5.39),
+            new Product("cheese", 4.50)
+        ];
+
+        let trader = new Store(trader_products, "Trader Joes");
+
+        return [kroger, aldi, harris, trader];
+    }
+</script>
