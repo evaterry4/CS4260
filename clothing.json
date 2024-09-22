@@ -2,71 +2,55 @@
   {
     "Garment": "Shirt",
     "Brand": "Abercrombie",
-    "Price": 40
-  },
-  {
-    "Garment": "Shirt",
-    "Brand": "Target",
-    "Price": 10
+    "Price": 40,
+    "image": "img/abercrombie_shirt.webp"
   },
   {
     "Garment": "Shirt",
     "Brand": "Aerie",
-    "Price": 25
+    "Price": 25, 
+    "image": "img/aerie_shirt.jpg"
   },
   {
     "Garment": "Shirt",
     "Brand": "Old Navy",
-    "Price": 9
+    "Price": 9, 
+    "image": "img/oldnavy_shirt.png"
   },
   {
     "Garment": "Pants",
     "Brand": "Gap",
-    "Price": 65
+    "Price": 65, 
+    "image": "img/gap_pants.png"
   },
   {
     "Garment": "Pants",
     "Brand": "Abercrombie",
-    "Price": 72
+    "Price": 72,
+    "image": "img/abercrombie_pants.png"
   },
   {
     "Garment": "Pants",
-    "Brand": "Amazon",
-    "Price": 19
-  },
-  {
-    "Garment": "Pants",
-    "Brand": "Madewell",
-    "Price": 99.99
-  },
-  {
-    "Garment": "Pants",
-    "Brand": "American Eagle",
-    "Price": 30.14
-  },
-  {
-    "Garment": "Shoes",
-    "Brand": "Nike",
-    "Price": 129.99
+    "Brand": "Lululemon",
+    "Price": 100,
+    "image":"img/lululemon_pants.png"
   },
   {
     "Garment": "Shoes",
     "Brand": "New Balance",
-    "Price": 70
-  },
-  {
-    "Garment": "Shoes",
-    "Brand": "Veja",
-    "Price": 125.4
+    "Price": 70,
+    "image": "img/newbalance_shoes.png"
   },
   {
     "Garment": "Shoes",
     "Brand": "Converse",
-    "Price": 70
+    "Price": 70,
+    "image": "img/converse_shoes.jpg"
   },
   {
     "Garment": "Shoes",
     "Brand": "Hoka",
-    "Price": 140
+    "Price": 140,
+    "image": "img/hokas_shoes.webp"
   }
 ]

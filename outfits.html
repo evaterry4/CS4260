@@ -58,36 +58,65 @@
     }
 
     function garmentSelected(garmentData) {
-        const table = document.getElementById("outfitTable");
-        // let list = document.createElement("ul");
-        let outfitId = 0;
         switch (garmentData.Garment) {
             case 'Shirt':
-                for (let p of pants) {
-                    for (let s of shoes) {
-                        let row = document.createElement("tr");
-                        row.setAttribute("id", "outfit" + outfitId);
-                        outfitId += 1;
-                        let col1 = document.createElement("td");
-                        let col2 = document.createElement("td");
-                        let col3 = document.createElement("td");
-
-                        col1.innerHTML = garmentData["Brand"] + " " + garmentData["Garment"];
-                        col2.innerHTML = p["Brand"] + " " + p["Garment"];
-                        col3.innerHTML = s["Brand"] + " " + s["Garment"];
-                        row.appendChild(col1);
-                        row.appendChild(col2);
-                        row.appendChild(col3);
-
-                        table.appendChild(row);
-                    }
-                }
+                displayOutfits(garmentData, pants, shoes);
                 break;
             case 'Pants':
-                alert('you selected pants');
+                displayOutfits(garmentData, shirts, shoes);
                 break;
-
+            case 'Shoes':
+                displayOutfits(garmentData, shirts, pants);
+                break;
         }
-        // pElement.append(list);
+    }
+
+    function displayOutfits(selectedGarmentData, otherGarmentList1, otherGarmentList2){
+        const table = document.getElementById("outfitTable");
+        table.innerHTML = "";
+        // let list = document.createElement("ul");
+        let outfitId = 0;
+        for (let o1 of otherGarmentList1) {
+            for (let o2 of otherGarmentList2) {
+                let outfitDiv = document.createElement("div");
+                outfitDiv.setAttribute("id", "outfit" + outfitId++);
+                outfitDiv.classList.add("outfit");
+       
+               
+                let shirt, pant, shoe;
+                if (selectedGarmentData.Garment === "Shirt") {
+                    shirt = selectedGarmentData;
+                    pant = o1; 
+                    shoe = o2;
+                }
+                else if(selectedGarmentData.Garment === "Pants") {
+                    shirt = o1;
+                    pant = selectedGarmentData; 
+                    shoe = o2;
+                }
+                else if(selectedGarmentData.Garment === "Shoes"){
+                    shirt = o1;
+                    pant = o2; 
+                    shoe = selectedGarmentData;
+                }
+
+         
+                let shirtPic = document.createElement("img");
+                let pantPic = document.createElement("img");
+                let shoePic = document.createElement("img");
+                shirtPic.src = shirt.image;
+                pantPic.src = pant.image;
+                shoePic.src = shoe.image;
+                shirtPic.alt = shirt["Brand"] + " " + shirt["Garment"];
+                pantPic.alt = pant["Brand"] + " " + pant["Garment"];
+                shoePic.alt = shoe["Brand"] + " " + shoe["Garment"];
+                outfitDiv.appendChild(shirtPic);
+                outfitDiv.appendChild(pantPic);
+                outfitDiv.appendChild(shoePic);
+                outfitTable.appendChild(outfitDiv);
+
+            }
+        }
+
     }
 </script>

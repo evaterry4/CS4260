@@ -1,6 +1,6 @@
 body {
     padding-top: 7px;
-    padding-left: 10px;
+    padding-left: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -28,16 +28,26 @@ ul li {
     text-align: left;
 }
 
-ul li:hover{
+ul li:hover {
     background-color: #C9E2E2;
 }
-/* ul li:nth-child(even) {
-    background-color: #C9E2E2;
-} */
-
-
-
 
 p {
     padding-left: 15px;
+}
+
+.outfit {
+    max-width: 400px;
+    border: 1px solid #ccc; /* Optional styling */
+    /* margin: 10px 0;
+    padding: 10px; */
+    background-color: #F4EAF4;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center images */
+}
+
+.outfit img {
+    max-width: 50%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
 }
